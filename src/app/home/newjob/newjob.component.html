@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="activebox m-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab">BASIC DETAILS</a>
+            </li>
+        </ul>
+        <form class="box" autocomplete="off" [formGroup]="jobForm">
+            <button class="btn btn-success float-right mt-2 mr-5 mb-2" type="submit" 
+                (click)="newjobForm()">Submit</button>
+            <div class="row col-12 mt-4">
+                <div class="card col-5 pb-2">
+                    <div class="form-group">
+                        <br>
+                        <input class="form-control" type="text" formControlName="jobTitle" id="jobtit" name="jobtit"
+                            placeholder="Job title">
+                        <p *ngIf="(validation && f['jobTitle'].errors)" class="class-feedback"
+                            style="color: red; float: left;">
+                            *Required</p>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" formControlName="department" id="dept" name="dept"
+                            placeholder="Department">
+                        <p *ngIf="(validation && f['department'].errors)" class="class-feedback"
+                            style="color: red; float: left;">
+                            *Required</p>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="jtype" name="jtype" formControlName="jobType">
+                            <option value="" selected>Choose job type</option>
+                            <option value="Remote">Remote</option>
+                            <option value="Onsite">Onsite</option>
+                        </select>
+                        <p *ngIf="(validation && f['jobType'].errors)" class="class-feedback"
+                            style="color: red; float: left;">
+                            *Required</p>
+                        <br>
+                    </div>
+                    <div class="form-group">
+                        <select  class="form-control" id="jobLocationId" name="jobLocationId" formControlName="jobLocationId">
+                            <option value="" selected>Choose job location</option>
+                                <option *ngFor="let cities of cities" value={{cities.id}}>{{cities.name}}</option>
+                        </select>
+                        <p *ngIf="(validation && f['jobLocationId'].errors)" class="class-feedback"
+                            style="color: red; float: left;">
+                            *Required</p>
+                        <br>
+                    </div>
+                    <label for="jdes">Job Description:</label>
+                    <textarea id="jdes" formControlName="jobDescription" name="jdes"></textarea>
+                    <p *ngIf="(validation && f['jobDescription'].errors)" class="class-feedback"
+                        style="color: red; float: left;">
+                        *Required</p>
+                </div>
+                <div class="card col-5 pb-2">
+                    <label for="jqualify">Job Qualification:</label>
+                    <textarea id="jqualify" formControlName="jobQualification" name="jqualify"></textarea>
+                    <p *ngIf="(validation && f['jobQualification'].errors)" class="class-feedback"
+                        style="color: red; float: left;">
+                        *Required</p>
+                    <label for="jhigh">Job HighLights:</label>
+                    <textarea id="jhigh" formControlName="jobHighlights" name="jhigh"></textarea>
+                    <p *ngIf="(validation && f['jobHighlights'].errors)" class="class-feedback"
+                        style="color: red; float: left;">
+                        *Required</p>
+                    <label for="jres">Job Responsibilities:</label>
+                    <textarea id="jres" formControlName="jobResponsibilities" name="jres"></textarea>
+                    <p *ngIf="(validation && f['jobResponsibilities'].errors)" class="class-feedback"
+                        style="color: red; float: left;">
+                        *Required</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

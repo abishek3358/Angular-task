@@ -1,0 +1,34 @@
+<div class="form text-center">
+    <div class="card  pr-4 pl-4 ">
+        <form class="box"  autocomplete="off" [formGroup]="logForm">
+            <h1 class="head display-4">Log In</h1>
+            <div class="form-group">
+                <br>
+                <input class="form-control" type="text" formControlName="userName" id="uname" name="uname"
+                    placeholder="Username">
+                <p *ngIf="(validation && f['userName'].errors)" class="class-feedback" style="color: red; float: left;">
+                    *Required</p>
+                <br>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" formControlName="password" id="pwd" name="pwd"
+                    placeholder="Password">
+                <p *ngIf="(validation && f['password'].errors)" class="class-feedback" style="color: red; float: left;">
+                    *Required</p>
+            </div>
+            <span style="color: red; float: left;">{{errmsg}}</span>
+            <div class="form-group form-check text-left">
+                <label class="form-check-label ">
+                    <input class="form-check-input" type="checkbox" name="Show">Show password
+                </label>
+            </div>
+            <div class="passforgot text-right m-1">
+                <a href="#">Forgot password?</a>
+            </div>
+            <div class="button">
+                <button type="button" class="btn form-control   btn-primary" (click)="loginForm()">Login</button>
+            </div><br>
+            <p class="text-center">Don't have an account?<button class="signbtn" type="submit">Sign Up</button></p>
+        </form>
+    </div>
+</div>
