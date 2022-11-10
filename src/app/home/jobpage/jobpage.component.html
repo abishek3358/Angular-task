@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="activebox m-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab">INACTIVE</a>
+              </li>
+        </ul>
+        <button class="btn btn-success float-right m-3" routerLink="/home/newjob">+New job</button>
+        <table class="table  bg-dark text-white">
+            <thead>
+                <tr> <th>S.NO</th>
+                    <th>JOB TITLE</th>
+                    <th>DEPARTMENT</th>
+                    <th>JOB TYPE</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of tableData;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{job.jobTitle}}</td>
+                    <td>{{job.department}}</td>
+                    <td>{{job.jobType}}</td>
+                    <td><button type="button"  (click)="editJob(job.id)" style="background: transparent; border:hidden; color:blue;" class="fas fa-pen"></button><button type="button"  style="background: transparent; border:hidden; color:red;" class="fas fa-trash"></button></td>
+                </tr>    
+            </tbody>
+        </table>
+    </div>
+</div>
