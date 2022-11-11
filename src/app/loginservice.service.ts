@@ -15,7 +15,7 @@ export class LoginserviceService {
   private _getById = environment.apiUrl + '/api/careers/get'
   private _updateUrl = environment.apiUrl + '/api/careers/update'
   // Edit API: GET https://hastin-container.com/staging/api/careers/get/e135e807-5017-4fab-bed1-bd2e633eca24
-  //https://hastin-container.com/staging/api/careers/search/active
+  //https://hastin-container.com/staging/api/careers/search/inactive
  // https://hastin-container.com/staging/api/careers/create
  // https://hastin-container.com/staging/api/countryCities/get
   //https://hastin-container.com/staging/api/careers/get/e135e807-5017-4fab-bed1-bd2e633eca24
@@ -26,27 +26,27 @@ export class LoginserviceService {
   ) { }
 
   loginForm(data: any) {
-    return this.http.post<any>(this._login, data)
+    return this.http.post<any>(this._login, data);
   }
   userData() {
-    return this.http.get<any>(this._userDetail)
+    return this.http.get<any>(this._userDetail);
   }
   getToken() {
-    return localStorage.getItem('data')
+    return localStorage.getItem('data');
   }
   getJob(data: any){
-    return this.http.put<any>(this._getAlljobListing , data)
+    return this.http.put<any>(this._getAlljobListing , data);
   }
   createJob(data: any){
-    return this.http.post<any>(this._createJob,data)
+    return this.http.post<any>(this._createJob,data);
   }
   cityGet(){
-    return this.http.get<any>(this._cityUrl)
+    return this.http.get<any>(this._cityUrl);
   }
   getById(id:any){
-    return this.http.get<any>(this._getById + '/'+ id)
+    return this.http.get<any>(this._getById + '/'+ id);
   }
-  updateUrl(data: any){
-    return this.http.put<any>(this._updateUrl,data)
+  updateJob(data: any){
+    return this.http.put<any>(this._updateUrl,data);
   }
 }

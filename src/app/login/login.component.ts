@@ -14,10 +14,10 @@ import { Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   logForm!: FormGroup;
-  token: any
-  validation: boolean = false
-  errmsg: any
-  err: any
+  token: any;
+  validation: boolean = false;
+  errmsg: any;
+  err: any;
 
   constructor(
     private loginService: LoginserviceService,
@@ -26,35 +26,35 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    localStorage.clear()
+    localStorage.clear();
     this.logForm = this.fb.group({
       userName: [null, Validators.required],
       password: [null, Validators.required]
     })
   }
   get f() {
-    return this.logForm.controls
+    return this.logForm.controls;
   }
 
 
   loginForm() {
     this.validation = true;
     if (this.logForm.invalid) {
-      return
+      return;
     }
     this.loginService.loginForm(this.logForm.value).pipe(first()).subscribe(
       res => {
-      localStorage.setItem('data', res.data.jwt)
-        this.logForm.reset()
-        this.route.navigate(['/home'])
+      localStorage.setItem('data', res.data.jwt);
+        this.logForm.reset();
+        this.route.navigate(['/home']);
     }
       , err => {
         console.log(err.error.error.message);
         if (err) {
-          this.errmsg = err.error.error.message
+          this.errmsg = err.error.error.message;
         }
 
-      })
+      });
 
 
   }

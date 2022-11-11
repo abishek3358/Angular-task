@@ -17,14 +17,14 @@ export class LoginInterceptorInterceptor implements HttpInterceptor {
     private service:LoginserviceService
   ) { }
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.service.getToken()
+    const token = this.service.getToken();
     if(token){
     request = request.clone({
       setHeaders: {
         'Authorization':`BslogiKey ${token}`
       }
     })
-    console.log(request.method)
+    console.log(request.method);
   }
     return next.handle(request);
   }

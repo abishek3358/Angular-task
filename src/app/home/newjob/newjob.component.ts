@@ -11,11 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class NewjobComponent implements OnInit {
   jobForm!: FormGroup;
-  validation: boolean = false
-  cities: any
-  userId: any
-  resp: any
-  update: any
+  validation: boolean = false;
+  cities: any;
+  jobId: any;
+  resp: any;
+  update: any;
   constructor(
     private formBuilder: FormBuilder,
     private service: LoginserviceService,
@@ -23,7 +23,7 @@ export class NewjobComponent implements OnInit {
     private activeRoute: ActivatedRoute
   ) { }
   get f() {
-    return this.jobForm.controls
+    return this.jobForm.controls;
   }
   ngOnInit(): void {
     this.jobForm = this.formBuilder.group({
@@ -39,18 +39,15 @@ export class NewjobComponent implements OnInit {
       status: ['INACTIVE']
 
     })
-    this.service.cityGet().subscribe(
-      res => {
-        console.log(res)
-        this.cities = res.data
-      }
-    )
-    this.userId = this.activeRoute.snapshot.params['id']
-    if (this.userId) {
-      this.service.getById(this.userId).subscribe(
+
+    this.cityGet();
+
+    this.jobId = this.activeRoute.snapshot.params['id'];
+    if (this.jobId) {
+      this.service.getById(this.jobId).subscribe(
         res => {
           console.log(res)
-          this.resp = res.data
+          this.resp = res.data;
           this.jobForm.patchValue({
             id: this.resp.id,
             jobTitle: this.resp.jobTitle,
@@ -61,32 +58,37 @@ export class NewjobComponent implements OnInit {
             jobQualification: this.resp.jobQualification,
             jobHighlights: this.resp.jobHighlights,
             jobResponsibilities: this.resp.jobResponsibilities,
-            status:'INACTIVE'
+            status: 'INACTIVE'
           })
         }
       )
     }
   }
+  cityGet(){
+    this.service.cityGet().subscribe(
+      res => {
+        this.cities = res.data;
+      }
+    )
+  }
   newjobForm() {
     this.validation = true;
     if (this.jobForm.invalid) {
-      return
+      return;
     }
-   else if (this.userId){
-      this.service.updateUrl(this.jobForm.value).subscribe(
+    else if (this.jobId) {
+      this.service.updateJob(this.jobForm.value).subscribe(
         res => {
-          console.log(res)
         }
       )
-      this.route.navigate(['/home/jobpage'])
+      this.route.navigate(['/home/jobpage']);
     }
-    else{
+    else {
       this.service.createJob(this.jobForm.value).pipe(first()).subscribe(
         res => {
-          console.log(res)
         }
       )
-      this.route.navigate(['/home/jobpage'])
+      this.route.navigate(['/home/jobpage']);
     }
   }
 }
