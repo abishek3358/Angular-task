@@ -1,20 +1,22 @@
-<div class="container-fluid" style="height: 625px; ">
+<div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 header" style="height:50px; text-align:center; background-color:gray;">
             <div class="user float-right">
-                <span style="color:white; font-weight: bolder; margin-right: 10px;">{{userDetail}}</span><img class="img"
-                    src="../../assets/dummy-user.png" alt="userimg" width="50px" height="50px">
-                    <button type="submit" style="font-weight: bolder;" class="btn btn-dark ml-4 logout" (click)="logoutForm()">Log out</button>
+                <span style="color:white; font-weight: bolder; margin-right: 10px;">{{userDetail}}</span><img
+                    class="img" src="../../assets/dummy-user.png" alt="userimg" width="50px" height="50px">
+                <button type="submit" style="font-weight: bolder;" class="btn btn-dark ml-4 logout"
+                    (click)="logoutForm()">Log out</button>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-1 sidebar">
             <ul class="links">
-                <li><a href="">Home</a></li>
-                <li><a href="" >Serving</a></li>
-                <li><a href="" >Products</a></li>
+                <li><a >Home</a></li>
+                <li><a >Serving</a></li>
+                <li><a >Products</a></li>
                 <li><a routerLink="jobpage">Job listing</a></li>
+                <li><a >About Us</a></li>
             </ul>
         </div>
         <div class="col-sm-11 content">
@@ -28,3 +30,14 @@
         </div>
     </div>
 </div>
+<footer>
+    <div class="col-sm-12" style="height:95px; text-align:center; background-color:gray; position: fixed;">
+        <p style="color: white;">2022 © A2Z Desingner.</p>
+        <div class="links" style="display:inline-flex;">
+            <a class="btn btn-outline-light btn-social "><i class="fab fa-fw fa-facebook-f"></i></a>
+            <a class="btn btn-outline-light btn-social "><i class="fab fa-fw fa-twitter"></i></a>
+            <a class="btn btn-outline-light btn-social "><i class="fab fa-fw fa-linkedin-in"></i></a>
+            <a class="btn btn-outline-light btn-social "><i class="fab fa-fw fa-dribbble"></i></a>
+        </div>
+    </div> 
+</footer>
