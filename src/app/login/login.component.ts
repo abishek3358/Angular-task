@@ -53,11 +53,6 @@ export class LoginComponent implements OnInit {
         if (err) {
           this.errmsg = err.error.error.message;
         }
-
       });
-
-
   }
-
-
 }
